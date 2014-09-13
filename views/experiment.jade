@@ -1,0 +1,32 @@
+extends layout
+
+block content
+	.overlay
+		.dialog  
+			.message Click 'next' to move to the next item.
+			button next 
+				i.fa.fa-long-arrow-right
+	nav.navbar
+		.title #Doc.ly
+		.navbar-tabs.hidden
+			.tab.navbar-tab-active
+				.label font
+			.tab 
+				.label paragraph
+			.tab 
+				.label drawing
+			.tab
+				.label insert
+			.tab
+				.label clipboard
+	.container
+		include ribbon.jade
+		.document
+			.prompt-container 
+				.prompt Please select the following: 
+				.ribbon
+					.item
+						i.fa.fa-eraser
+				.item-name eraser
+			.text(contentEditable=true)
+
