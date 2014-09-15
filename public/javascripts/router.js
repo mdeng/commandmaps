@@ -11,14 +11,18 @@ define([
 			corresponds to: ""
 			radiant-journey-8771.herokuapp.com/#test/1 to "test/:testnumber" etc. */
 		routes: {
-			"": "main"
+			"": "main",
 		}
 	});
 
 	var initialize = function() {
 		var router = new Router();
+		console.log('initialize');
 		router.on('route:main', function() {
+			console.log('main');
 			// do something when the page loads
+			var infoView = new InfoView();
+			infoView.render();
 		});
 	}
 
