@@ -1,8 +1,9 @@
 define([
 	'jquery',
 	'underscore',
-	'backbone' // below: add views as needed in the form "views/viewname" with no .js
-], function($, _, Backbone /* also add views here to use them as variables */) {
+	'backbone', // below: add views as needed in the form "views/viewname" with no .js
+	'views/InfoView'
+], function($, _, Backbone, InfoView /* also add views here to use them as variables */) {
 
 	var Router = Backbone.Router.extend({
 		/*
@@ -12,6 +13,7 @@ define([
 			radiant-journey-8771.herokuapp.com/#test/1 to "test/:testnumber" etc. */
 		routes: {
 			"": "main",
+			"hello": "hello"
 		}
 	});
 
@@ -22,8 +24,13 @@ define([
 			console.log('main');
 			// do something when the page loads
 			var infoView = new InfoView();
-			infoView.render();
+			//infoView.render();
 		});
+		router.on('route:hello', function() {
+			console.log('hello');
+			var infoView = new InfoView();
+		});
+		Backbone.history.start();
 	}
 
 	return {
