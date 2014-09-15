@@ -19,14 +19,13 @@ define([
 			render: function() {
 				// render a view somehow, maybe by pulling data from the server, running it through a template, and then rendering the div
 				var data = {'text': 'this is text', 'list': [{moretext: '1'}, {moretext: '2'}]};
-				// underscore takes data and fleshes out the html template
-				var newe = {info: data};
-				console.log(newe);
-				console.log(data);
-				var template = _.template(instruct, newe);
-				console.log(template);
+				// defines a variable to use for scoping the template
+				_.templateSettings.variable = 'info';
+				// underscore takes the template and parses it
+				var temp = _.template(instruct);
+				// temp(data) inserts the data into the underscore template, then
 				// jquery changes the html inside the view div to be the fleshed-out template
-				this.$el.html(template);
+				this.$el.html(temp(data));
 			},
 			onClickButton: function(ev) {
 				// handle the event defined above
