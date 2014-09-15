@@ -5,7 +5,8 @@ requirejs.config({
 		underscore: "libraries/underscore",
 		backbone: "libraries/backbone",
 		text: "libraries/text",
-		q: "libraries/q"
+		q: "libraries/q",
+		templates: "../templates"
 	},
 	shim: {
 		underscore: {
