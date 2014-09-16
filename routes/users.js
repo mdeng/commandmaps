@@ -13,7 +13,7 @@ function newUser(req, res) {
 		id: id
 	}
 	res.status(200).send(returnObject);
-	if (ord == 6) ord = 1;
+	if (ord == 4) ord = 1;
 	else ord++;
 }
 
