@@ -11,7 +11,7 @@ define([
 	'text!../templates/item_prompt.html',
 	'views/PromptView',
 	], function($, _, Backbone, Commands, Menu, mainTemplate, promptTemplate, PromptView) {
-		var PartTwoMainView = Backbone.View.extend({
+		var PartFourMainView = Backbone.View.extend({
 			el: '#body-container',
 			events: {
 				'click .item': 'onClickItem',
@@ -21,8 +21,8 @@ define([
 
 				this.currentData = {
 					userID: this.User.id,
-					interfaceType: (this.User.order % 2 ? 'R' : 'C'),
-					commandSetId: Math.floor(this.User.order / 2),
+					interfaceType: (this.User.order % 2 ? 'C' : 'R'),
+					commandSetId: (1 - Math.floor(this.User.order / 2)),
 					correct: true,
 				};
 
@@ -73,13 +73,13 @@ define([
 							if (this.itemCount < NUM_TRIALS_PERFORMANCE) {
 								this.refreshCommand();
 							} else {
-								Backbone.history.navigate('nasa-tlx', {trigger: true, replace: true});
+								Backbone.history.navigate('3-info', {trigger: true, replace: true});
 							}
 						} 
 					});*/
 
 					// TODO remove
-					Backbone.history.navigate('3-info', {trigger: true, replace: true});
+					//Backbone.history.navigate('nasa-tlx', {trigger: true, replace: true});
 				} else {
 					this.currentData.correct = false;
 					console.log('clicked incorrectly');
@@ -92,6 +92,6 @@ define([
 		        // ...
 		    },
 		});
-		return PartTwoMainView;
+		return PartFourMainView;
 
 });

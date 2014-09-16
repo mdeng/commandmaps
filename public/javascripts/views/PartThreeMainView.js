@@ -1,4 +1,4 @@
-var NUM_TRIALS_PERFORMANCE = 1;
+var NUM_TRIALS_FAMILIARIZATION = 1;
 var KEYCODE_ALT = 18;
 
 define([
@@ -11,7 +11,7 @@ define([
 	'text!../templates/item_prompt.html',
 	'views/PromptView',
 	], function($, _, Backbone, Commands, Menu, mainTemplate, promptTemplate, PromptView) {
-		var PartTwoMainView = Backbone.View.extend({
+		var PartThreeMainView = Backbone.View.extend({
 			el: '#body-container',
 			events: {
 				'click .item': 'onClickItem',
@@ -21,9 +21,8 @@ define([
 
 				this.currentData = {
 					userID: this.User.id,
-					interfaceType: (this.User.order % 2 ? 'R' : 'C'),
-					commandSetId: Math.floor(this.User.order / 2),
-					correct: true,
+					interfaceType: (this.User.order % 2 ? 'C' : 'R'),
+					commandSetId: (1 - Math.floor(this.User.order / 2)),
 				};
 
 				this.commandNames = Commands.getCommandNames();
@@ -62,26 +61,13 @@ define([
 				var clickedId = $(e.currentTarget).data('id');
 				if (clickedId == this.commandSequence[this.itemCount]) {
 					console.log('clicked correctly!');
-
-					this.currentData.time = Date.now() - this.startTime;
-					this.currentData.commandID = clickedId;
-					console.log('PUT-ing' + this.currentData);
-					/*$.ajax("/db/trials", { type: "PUT", data: this.currentData, success: function(response) { 
-							console.log(response);
-							// next one
-							this.itemCount++;
-							if (this.itemCount < NUM_TRIALS_PERFORMANCE) {
-								this.refreshCommand();
-							} else {
-								Backbone.history.navigate('nasa-tlx', {trigger: true, replace: true});
-							}
-						} 
-					});*/
-
-					// TODO remove
-					Backbone.history.navigate('3-info', {trigger: true, replace: true});
+					this.itemCount++;
+					if (this.itemCount < NUM_TRIALS_FAMILIARIZATION) {
+						this.refreshCommand();
+					} else {
+						Backbone.history.navigate('4-info', {trigger: true, replace: true});
+					}
 				} else {
-					this.currentData.correct = false;
 					console.log('clicked incorrectly');
 					// play sound;
 				}
@@ -92,6 +78,6 @@ define([
 		        // ...
 		    },
 		});
-		return PartTwoMainView;
+		return PartThreeMainView;
 
 });
