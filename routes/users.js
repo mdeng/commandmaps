@@ -7,9 +7,10 @@ router.get('/new', newUser);
 var ord = 1;
 
 function newUser(req, res) {
+	var id = shortid.generate();
 	var returnObject = {
 		order: ord,
-		id: shortid.generate();
+		id: id
 	}
 	res.status(200).send(returnObject);
 	if (ord == 6) ord = 1;
