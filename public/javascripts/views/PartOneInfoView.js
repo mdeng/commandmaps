@@ -8,7 +8,7 @@ define([
 		var PartOneInfoView = Backbone.View.extend({
 			el: '#overlay-container',
 			events: {
-				'click button#btn-begin': 'onClickBegin'
+				'click button#btn-begin-one': 'onClickBegin'
 			},
 			initialize: function() {
 				this.$el.removeClass('hidden');
@@ -17,7 +17,6 @@ define([
 				this.render();
 			},
 			render: function() {
-				_.templateSettings.variable = 'info';
 				this.$el.html(_.template(instruct));
 			},
 			onClickBegin: function(e) {

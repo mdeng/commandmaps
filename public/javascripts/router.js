@@ -1,17 +1,21 @@
 define([
 	'jquery',
 	'underscore',
-	'backbone', // below: add views as needed in the form "views/viewname" with no .js
+	'backbone',
 	'views/HelloView',
 	'views/PartOneInfoView',
 	'views/PartOneMainView',
-], function($, _, Backbone, HelloView, PartOneInfoView, PartOneMainView) {
+	'views/PartTwoInfoView',
+	'views/PartTwoMainView',
+], function($, _, Backbone, HelloView, PartOneInfoView, PartOneMainView, PartTwoInfoView, PartTwoMainView) {
 
 	var Router = Backbone.Router.extend({
 		routes: {
 			"": "hello",
 			"1-info": "partOneInfo",
 			"1-main": "partOneMain",
+			"2-info": "partTwoInfo",
+			"2-main": "partTwoMain",
 		}
 	});
 
@@ -26,6 +30,12 @@ define([
 		});
 		router.on('route:partOneMain', function() {
 			var partOneMainView = new PartOneMainView();
+		});
+		router.on('route:partTwoInfo', function() {
+			var partTwoInfoView = new PartTwoInfoView();
+		});
+		router.on('route:partTwoMain', function() {
+			var partTwoMainView = new PartTwoMainView();
 		});
 		Backbone.history.start();
 	}

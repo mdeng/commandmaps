@@ -6,7 +6,7 @@ define([
 	], function($, _, Backbone, instruct) {
 		
 		var MainView = Backbone.View.extend({
-			el: '#content-container', // identify the div which this view controls by id, class, whichever
+			el: '#main-container', // identify the div which this view controls by id, class, whichever
 			events: {
 				// lets you respond to events that happen within the div for this view
 				//'click a#Button': 'onClickButton'

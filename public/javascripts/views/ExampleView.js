@@ -20,7 +20,7 @@ define([
 				// render a view somehow, maybe by pulling data from the server, running it through a template, and then rendering the div
 				data = getDataFromServer(); // this is just an example
 				// underscore takes data and fleshes out the html template
-				var template = _.template(template, {info: data});
+				var template = _.template(instruct, {info: data});
 				// jquery changes the html inside the view div to be the fleshed-out template
 				this.$el.html(template);
 			},

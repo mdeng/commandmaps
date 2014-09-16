@@ -67,7 +67,7 @@ button {
 }
 
 .hidden {
-	display: none;
+	display: none !important;
 }
 
 /* overlay */
@@ -94,7 +94,11 @@ button {
 
 /* main */
 
-.container {
+#body-container {
+	height: 100%;
+	width: 100%;
+}
+#main-container {
 	height: 100%;
 	margin: 0 auto;
 	width: @doc-width;
@@ -142,6 +146,7 @@ button {
 /* ribbon */
 
 .ribbon {
+	z-index:150;
 	color: @white;
 	font-size: 20px;
 	.shadow(8px, @black-60);
@@ -170,7 +175,7 @@ button {
 	}
 }
 
-.ribbon-container {
+#ribbon-container {
 	position: absolute; 
 	&.mode-command-maps {
 		top: 100px;
@@ -188,6 +193,7 @@ button {
 	margin-bottom: 50px;
 	.shadow(4px, @black-30);
 	.text {
+		display:none;
 		position: relative;
 		padding: 120px 80px 80px 80px;
 		overflow: hidden;
@@ -208,7 +214,7 @@ button {
 		.prompt {
 			padding-bottom: 18px;
 		}
-		.item-name {
+		#item-name {
 			padding-top: 7px; 
 			.header-text();
 		}
@@ -216,7 +222,6 @@ button {
 			background: @dark-gray;
 			height: 50px;
 			width: 100%;
-			content: 308140983;
 		}
 	}
 }

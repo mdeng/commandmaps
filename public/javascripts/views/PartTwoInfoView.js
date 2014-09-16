@@ -5,10 +5,10 @@ define([
 	'text!../templates/part_two_info.html'
 	], function($, _, Backbone, instruct) {
 		
-		var PartOneInfoView = Backbone.View.extend({
+		var PartTwoInfoView = Backbone.View.extend({
 			el: '#overlay-container',
 			events: {
-				'click button#btn-begin': 'onClickBegin'
+				'click button#btn-begin-two': 'onClickBegin'
 			},
 			initialize: function() {
 				this.$el.removeClass('hidden');
@@ -17,15 +17,13 @@ define([
 				this.render();
 			},
 			render: function() {
-				_.templateSettings.variable = 'info';
 				this.$el.html(_.template(instruct));
 			},
 			onClickBegin: function(e) {
 				// handle the event defined above
 				this.$el.addClass('hidden');
-				location.href = '2-main';
+				Backbone.history.navigate('2-main', {trigger: true, replace: true});
 			}
 		});
-		return PartOneInfoView;
-
+		return PartTwoInfoView;
 });
