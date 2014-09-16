@@ -5,7 +5,7 @@ define([
 	'text!../templates/instructions.html'
 	], function($, _, Backbone, instruct) {
 		
-		var InfoView = Backbone.View.extend({
+		var MainView = Backbone.View.extend({
 			el: '#content-container', // identify the div which this view controls by id, class, whichever
 			events: {
 				// lets you respond to events that happen within the div for this view
@@ -27,11 +27,11 @@ define([
 				// jquery changes the html inside the view div to be the fleshed-out template
 				this.$el.html(temp(data));
 			},
-			onClickButton: function(ev) {
-				// handle the event defined above
-				ev.preventDefault();
+			onClickButton: function(e) {
+				$.getJSON('');
+				e.preventDefault();
 			}
 		});
-		return InfoView;
+		return MainView;
 
 });

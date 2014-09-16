@@ -1,4 +1,23 @@
 extends layout
 
 block content
-	#content-container
+	#overlay-container.overlay
+	nav.navbar
+		.title I HATE EVERYTHING
+		.navbar-tabs.hidden
+			.tab.navbar-tab-active
+				.label font
+			.tab 
+				.label paragraph
+			.tab 
+				.label drawing
+			.tab
+				.label insert
+			.tab
+				.label clipboard
+	.container
+		include ribbon.jade
+		.document
+			#prompt-container
+			.text(contentEditable=true)
+

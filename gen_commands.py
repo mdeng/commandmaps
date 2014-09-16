@@ -1,4 +1,4 @@
-from random import sample
+import random
 
 tab_names = ["font", "paragraph", "insert", "drawing", "symbols"]
 
@@ -10,14 +10,15 @@ def latin_square(n):
 	return [[list[i - j] for i in list] for j in range(n, 0, -1)]
 
 def gen_commands(num_sets=3):
-	tabs = sample(tab_names, 3)
+	tabs = random.sample(range(5), 3)
 	print "TABS: %s" % tabs
 
 	for i in range(num_sets):
 		print "\nSET %d: " % i 
 		for tab in tabs:
-			print "%s : %s" % (tab, sample(command_ids, 2))
+			print "%s : %s" % (tab, random.sample(command_ids, 2))
 	print ""
+
 
 if __name__ == "__main__":
 	gen_commands()

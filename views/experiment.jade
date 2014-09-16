@@ -1,7 +1,7 @@
 extends layout
 
 block content
-	.overlay
+	.overlay.hidden
 		.dialog#dialog-next.hidden
 			.message Click the button below to move <br> to the next item.
 			button next 
@@ -27,7 +27,7 @@ block content
 	.container
 		include ribbon.jade
 		.document
-			.prompt-container 
+			#prompt-container 
 				.prompt Please select the following: 
 				.ribbon
 					.item
