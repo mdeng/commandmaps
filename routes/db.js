@@ -47,7 +47,7 @@ function processTrial(req, res) {
 function processPref(req, res) {
 	var prefData = req.body;
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-		var queryString = "INSERT INTO preferences VALUES ('" +
+		var queryString = "INSERT INTO preferences VALUES ('"
 						   + prefData.userID + "', '"
 						   + prefData.pref + "');";
 		client.query(queryString, function(err, result) {
@@ -61,22 +61,36 @@ function processPref(req, res) {
 		});
 	});
 }
-
+/* structure of request object:
+	* userID as string
+	* interfaceType as 'R' or 'C'
+	* mental as int
+	* physical as int
+	* temporal as int
+	* hard_work as int
+	* frustration as int
+*/
 function processTLX(req, res) {
-
-}
-
-router.get('/db', function(req, res) {
+	var tlxData = req.body;
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-		client.query('SELECT * FROM trials', function(err, result) {
+		var queryString = "INSERT INTO tlx VALUES ('" +
+						   + tlxData.userID + "', '"
+						   + tlxData.interfaceType + "', "
+						   + tlxData.mental + ", "
+						   + tlxData.physical + ", "
+						   + tlxData.temporal + ", "
+						   + tlxData.hard_work + ", "
+						   + tlxData.frustration + ");";
+		client.query(queryString, function(err, result) {
 			done();
 			if (err) {
-				console.error(err); res.send("Error " + err);
+				console.error(err);
+				res.status(501).send(err);
 			} else {
-				res.send(result.rows);
+				res.send(204);
 			}
 		});
 	});
-});
+}
 
 module.exports = router;
