@@ -1,4 +1,4 @@
-var NUM_TRIALS_1 = 30;
+var NUM_TRIALS_1 = 3;
 var KEYCODE_ALT = 18;
 
 define([
@@ -20,14 +20,12 @@ define([
 				var code = e.keyCode;
 				if (code == KEYCODE_ALT) {
 					$('.ribbon').removeClass('hidden');
-					console.log('alt down');
 				}
 			},
 			onKeyUp: function(e) {
 				var code = e.keyCode;
 				if (code == KEYCODE_ALT) {
 					$('.ribbon').addClass('hidden');// TODO change to backbone
-					console.log('alt up');
 				}
 			},
 			closeTab: function(name) {
@@ -146,9 +144,8 @@ define([
 				this.$('#ribbon-container').removeClass('hidden');
 			},
 			renderPrompt: function(id) {
-				console.log('rendering item ' + id + ": "+this.commandNames[id]);
+				alert('click item ' + id + ": "+this.commandNames[id]);
 				var data = {name: 'hi'};
-				console.log(data.name);
 				var template = _.template(promptTemplate, {info: data});
 				this.$("#prompt-container").html(template);
 			},
