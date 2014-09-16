@@ -125,7 +125,7 @@ define([
 				this.renderPrompt(this.commandSequence[this.itemCount]);
 
 				// Interface-specific command menu handling
-				if (true){//this.currentData.interfaceType == 'R') {
+				if (this.currentData.interfaceType == 'R') {
 					this.initRibbon();
 				} else {
 					this.initCommandMaps();
