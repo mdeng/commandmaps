@@ -19,7 +19,11 @@ define([
 				"Left Arrow", "Right Arrow", "Up Arrow", "Down Arrow", "Circle", "Times", "Heart", "Star", "Asterisk", "Euro", "Yen", "Pound"
 			],
 			commandClasses: [
-				"fa-paragraph", "fa-align-left", "fa-align-center", "fa-align-right", "fa-align-justify", "fa-columns", "fa-indent", "fa-outdent", "fa-list-ol", "fa-list-ul", "fa-sort-alpha-asc", "fa-sort-alpha-desc"
+				"fa-font", "fa-bold", "fa-italic", "fa-underline", "fa-strikethrough", "fa-subscript", "fa-superscript", "fa-text-width", "fa-text-height", "fa-header", "fa-code", "fa-link",
+				"fa-paragraph", "fa-align-left", "fa-align-center", "fa-align-right", "fa-align-justify", "fa-columns", "fa-indent", "fa-outdent", "fa-list-ol", "fa-list-ul", "fa-sort-alpha-asc", "fa-sort-alpha-desc",
+				"fa-folder-open", "fa-table", "fa-area-chart", "fa-pie-chart", "fa-bar-chart", "fa-line-chart", "fa-file-word-o", "fa-file-excel-o", "fa-file-pdf-o", "fa-picture-o", "fa-file-audio-o", "fa-file-video-o",
+				"fa-pencil", "fa-paint-brush", "fa-eraser", "fa-eyedropper", "fa-tint", "fa-magic", "fa-circle-o", "fa-square-o", "fa-minus", "fa-crop", "fa-rotate-left", "fa-rotate-right",
+				"fa-arrow-left", "fa-arrow-right", "fa-arrow-up", "fa-arrow-down", "fa-circle", "fa-times", "fa-heart", "fa-star", "fa-asterisk", "fa-euro", "fa-jpy", "fa-gbp"
 			],
 			commandSets: [
 				[0, 2, 19, 16, 50, 55],

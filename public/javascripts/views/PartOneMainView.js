@@ -39,18 +39,21 @@ define([
 			render: function() {
 				var template = _.template(mainTemplate);
 				this.$el.html(template);
+				
 				this.renderPrompt(this.commandSequence[this.itemCount]);
-
+				
 				// Interface-specific command menu handling
 				Menu.render(this.currentData.interfaceType);
 
 				$('html').on('click', this.onClickOutsideTab);
 			},
 			renderPrompt: function(id) {
-				alert('click item ' + id + ": "+this.commandNames[id]);
-				var data = {name: 'hi'};
-				var template = _.template(promptTemplate, {info: data});
-				this.$("#prompt-container").html(template);
+				var toRender = {
+					dispClass: this.commandClasses[id],
+                    name: this.commandNames[id],
+				};
+				console.log(toRender.dispClass + ' '+ toRender.name);
+				this.promptView.render(toRender);
 			},
 			refreshCommand: function() {
 				this.renderPrompt(this.commandSequence[this.itemCount]);
