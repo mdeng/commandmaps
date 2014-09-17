@@ -9,13 +9,14 @@ define([
 			el: '#prompt-container',
 			initialize: function() {
 			},
-			render: function(item) {
-				//var info = {name: item.name};
-				var template = _.template(instruct, {variable: 'info'})(item);
+			render: function(count) {
+				alert('rendering ' + count);
+				//_.templateSettings.variable = 'info';
+				var info = {name: 'hi'};
+				var template = _.template(instruct);
 				// jquery changes the html inside the view div to be the fleshed-out template
-				//this.$el.html(template);
-				$('#prompt-container').html(template);
-				//this.delegateEvents();
+				this.$el.html(template);
+				this.delegateEvents();
 			},
 		});
 		return PromptView;
