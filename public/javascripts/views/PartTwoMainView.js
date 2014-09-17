@@ -1,4 +1,4 @@
-var NUM_TRIALS_PERFORMANCE = 1;
+var NUM_TRIALS_PERFORMANCE = 90;
 var KEYCODE_ALT = 18;
 
 define([
