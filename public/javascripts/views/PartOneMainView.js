@@ -23,6 +23,8 @@ define([
 					userID: this.User.id,
 					interfaceType: (this.User.order % 2 ? 'R' : 'C'),
 					commandSetId: Math.floor(this.User.order / 2),
+					correct: true,
+					parentIsDiff: false,
 				};
 
 				this.commandNames = Commands.getCommandNames();
@@ -54,16 +56,32 @@ define([
 				};
 				console.log(toRender.dispClass + ' '+ toRender.name);
 				this.promptView.render(toRender);
+				this.startTime = new Date().getTime();
 			},
 			refreshCommand: function() {
 				this.renderPrompt(this.commandSequence[this.itemCount]);
+				// reset correct command selection tracker
+				this.currentData.correct = true;
 			},
 			onClickItem: function(e) {
 				console.log("click item");
 				e.preventDefault();
 				var clickedId = $(e.currentTarget).data('id');
 				if (clickedId == this.commandSequence[this.itemCount]) {
+					// collect relevant data to send off
+					this.endTime = new Date().getTime();
+					this.currentData.time = this.endTime - this.startTime;
+					this.currentData.commandID = clickedId;
+
 					console.log('clicked correctly!');
+					// call endpoint to save row to database
+					$.ajax('/db/trials', {
+						type: 'PUT',
+						data: this.currentData,
+						error: function(err, status) { console.error(status + ' ' + err) },
+						success: function() { console.log('data saved!') }
+					});
+
 					this.itemCount++;
 					if (this.itemCount < NUM_TRIALS_FAMILIARIZATION) {
 						this.refreshCommand();
@@ -72,6 +90,7 @@ define([
 					}
 				} else {
 					console.log('clicked incorrectly');
+					this.currentData.correct = false;
 					// play sound;
 				}
 			}, 
