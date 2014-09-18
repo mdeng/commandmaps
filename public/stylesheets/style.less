@@ -59,7 +59,7 @@ button {
 	background: @aqua;
 	color: @white;
 	font-size: @font-large;
-	padding: 10px 20px;
+	padding: 10px 30px;
 	border: 0;
 	outline: 0;
 	.shadow(10px, @black-60);
@@ -92,6 +92,11 @@ button {
 		margin: 200px auto;
 		text-align: left;
 		color: @white;
+
+		.title {
+			.header-text();
+			font-size: @font-xlarge;
+		}
 
 		.message {
 			margin: 50px 0;

@@ -12,8 +12,6 @@ define([
 			},
 			initialize: function() {
 				this.$el.removeClass('hidden');
-				// called when you init the view
-				// for example, you can then render the view
 				this.render();
 			},
 			render: function() {

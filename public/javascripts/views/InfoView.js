@@ -20,11 +20,12 @@ define([
 			},
 			render: function() {
 				var message;
+				console.log('rendering info for part '+this.part);
 				switch (this.part) {
-					case 1: 
+					case "1": 
 						message = 'The following 30 trials will get you acquainted with Interface A.';
 						break;						
-					case 3:
+					case "3":
 						message = 'The following 30 trials will get you acquainted with Interface B.';
 						break;
 					default:
