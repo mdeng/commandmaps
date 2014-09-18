@@ -10,6 +10,14 @@ define([
 			},
 			setEnabled: function(enabled) {
 				this.enabled = enabled;
+				if (this.mode == "C") {
+					if (enabled) {
+						$('.navbar-message').removeClass('hidden');
+					} else {
+						this.hideRibbons();
+						$('.navbar-message').addClass('hidden');
+					}
+				}
 			},
 			hideRibbons: function() {
 				$('#ribbon-container .ribbon').addClass('hidden');
@@ -93,6 +101,8 @@ define([
 				return false;
 			},
 			init: function(mode) {
+				this.mode = mode;
+				this.setEnabled(false);
 				if (mode == "R") { // ribbon
 					console.log('initing Ribbon');
 					$('#ribbon-container').addClass('mode-ribbon');
@@ -110,7 +120,6 @@ define([
 					console.log('initing CM');
 					$('#ribbon-container').addClass('mode-command-maps');
 					$('.navbar-tabs').addClass('hidden');
-					$('.navbar-message').removeClass('hidden');
 					Menu.hideRibbons();
 					$(document).on('keydown', this.onKeyDown);
 					$(document).on('keyup', this.onKeyUp);
