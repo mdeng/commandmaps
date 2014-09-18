@@ -3,16 +3,12 @@ define([
 	'underscore',
 	'backbone',
 	'views/HelloView',
-	'views/PartOneInfoView',
-	'views/PartOneMainView',
-	'views/PartTwoInfoView',
-	'views/PartTwoMainView',
-	'views/PartThreeInfoView',
-	'views/PartThreeMainView',
-	'views/PartFourInfoView',
-	'views/PartFourMainView',
+	'views/InfoView',
+	'views/MainView',
 ], function($, _, Backbone, 
-		HelloView, 
+		HelloView,
+		InfoView,
+		MainView,
 		PartOneInfoView, 
 		PartOneMainView, 
 		PartTwoInfoView, 
@@ -25,14 +21,10 @@ define([
 	var Router = Backbone.Router.extend({
 		routes: {
 			"": "hello",
-			"1-info": "partOneInfo",
-			"1-main": "partOneMain",
-			"2-info": "partTwoInfo",
-			"2-main": "partTwoMain",
-			"3-info": "partThreeInfo",
-			"3-main": "partThreeMain",
-			"4-info": "partFourInfo",
-			"4-main": "partFourMain",
+			"info": "info",
+			"info/:part": "info",
+			"main": "main",
+			"main/:part": "main",
 		}
 	});
 
@@ -41,6 +33,23 @@ define([
 		console.log('initialize');
 		router.on('route:hello', function() {
 			var helloView = new HelloView();
+		});
+		router.on('route:info', function(part) {
+			console.log("route:info");
+			if (typeof part != 'undefined') {
+				console.log('part is ' + part);
+				var info = new InfoView({ part: part });
+			} else {
+				console.log("undefined part");
+				var info = new InfoView({ part: 1 })
+			}
+		});
+		router.on('route:main', function(part) {
+			if (typeof part != 'undefined') {
+				var main = new MainView({ part: part });
+			} else {
+				var main = new MainView({ part: 1 });
+			}
 		});
 		router.on('route:partOneInfo', function() {
 			var partOneInfoView = new PartOneInfoView();

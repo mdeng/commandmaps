@@ -27,7 +27,7 @@ define([
 					window.CMUser = response;
 
 					console.log(response);
-					Backbone.history.navigate('1-info', {trigger: true, replace: true});
+					Backbone.history.navigate('info/1', {trigger: true, replace: true});
 				});
 			}
 		});
