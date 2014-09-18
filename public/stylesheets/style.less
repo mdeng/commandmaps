@@ -53,6 +53,7 @@ body, html {
 }
 button {
 	.header-text();
+	text-align: center;
 	margin: 0 auto;
 	background: @aqua;
 	color: @white;
@@ -64,6 +65,12 @@ button {
 	&:hover {
 		cursor: pointer;
 	}
+}
+#button-next {
+	position: relative;
+	display: block;
+	top: 300px;
+	z-index: 1000;
 }
 
 .hidden {

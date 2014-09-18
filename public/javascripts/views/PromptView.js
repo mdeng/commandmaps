@@ -12,7 +12,11 @@ define([
 			render: function(item) {
 				var template = _.template(instruct, {variable: 'info'})(item);
 				$('#prompt-container').html(template);
+				$('#prompt-container').removeClass('hidden');
 			},
+			hide: function() {
+				$('#prompt-container').addClass('hidden');
+			}
 		});
 		return PromptView;
 

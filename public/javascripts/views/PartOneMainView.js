@@ -1,4 +1,5 @@
 var NUM_TRIALS_FAMILIARIZATION = 30;
+var NUM_TRIALS_PERFORMANCE = 90;
 var KEYCODE_ALT = 18;
 
 define([
@@ -15,6 +16,7 @@ define([
 			el: '#body-container',
 			events: {
 				'click .item': 'onClickItem',
+				'click #button-next': 'onClickNext',
 			},
 			initialize: function() {
 				this.User = window.CMUser;
@@ -39,9 +41,7 @@ define([
 			render: function() {
 				var template = _.template(mainTemplate);
 				this.$el.html(template);
-				
-				this.renderPrompt(this.commandSequence[this.itemCount]);
-				
+								
 				// Interface-specific command menu handling
 				Menu.render(this.currentData.interfaceType);
 
@@ -55,8 +55,10 @@ define([
 				console.log(toRender.dispClass + ' '+ toRender.name);
 				this.promptView.render(toRender);
 			},
-			refreshCommand: function() {
+			onClickNext: function(e) {
+				$(e.currentTarget).addClass('hidden');
 				this.renderPrompt(this.commandSequence[this.itemCount]);
+				Menu.setEnabled(true);
 			},
 			onClickItem: function(e) {
 				console.log("click item");
@@ -66,7 +68,9 @@ define([
 					console.log('clicked correctly!');
 					this.itemCount++;
 					if (this.itemCount < NUM_TRIALS_FAMILIARIZATION) {
-						this.refreshCommand();
+						this.$('#button-next').removeClass('hidden');
+						this.promptView.hide();
+						Menu.setEnabled(false);
 					} else {
 						Backbone.history.navigate('2-info', {trigger: true, replace: true});
 					}
@@ -78,7 +82,6 @@ define([
 			remove: function() {
 		        // Clean up after ourselves.
 				$('html').on('click', this.onClickOutsideTab);
-		        // ...
 		    },
 		});
 		return PartOneMainView;

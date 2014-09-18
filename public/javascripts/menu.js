@@ -2,8 +2,15 @@ define([
 	'jquery',
 	'underscore',
 	'backbone'
-	], function($, _, Backbone){
+	], function($, _, Backbone) {
 		var Menu = {
+			enabled: false,
+			isEnabled: function() {
+				return this.enabled;
+			},
+			setEnabled: function(enabled) {
+				this.enabled = enabled;
+			},
 			hideRibbons: function() {
 				$('#ribbon-container .ribbon').addClass('hidden');
 			},
@@ -54,29 +61,30 @@ define([
 			},
 			// handlers
 			onKeyDown: function(e) {
-				var code = e.keyCode;
-				if (code == KEYCODE_ALT) {
+				if (Menu.isEnabled() && e.keyCode == KEYCODE_ALT) {
 					Menu.showRibbons();
 				}
 			},
 			onKeyUp: function(e) {
-				var code = e.keyCode;
-				if (code == KEYCODE_ALT) {
+				if (Menu.isEnabled() && e.keyCode == KEYCODE_ALT) {
 					Menu.hideRibbons();
 				}
 			},
 			onClickInsideTab: function(e) {
 				e.stopPropagation();
-				var name = $(e.currentTarget).data('name');
-				if (this.currentTab != name) {
-					$('.tab').removeClass('navbar-tab-active');
-					Menu.hideRibbons();
+				if (Menu.isEnabled()) {
+					var name = $(e.currentTarget).data('name');
+					if (this.currentTab != name) {
+						$('.tab').removeClass('navbar-tab-active');
+						Menu.hideRibbons();
 
-					Menu.currentTab = name;
-					$(e.currentTarget).addClass('navbar-tab-active');
-					Menu.openRibbon(name);
+						Menu.currentTab = name;
+						$(e.currentTarget).addClass('navbar-tab-active');
+						Menu.openRibbon(name);
+					}
+					return true;
 				}
-				return true;
+				return false;
 			},
 			onClickOutsideTab: function(e) {
 				this.currentTab = "";
