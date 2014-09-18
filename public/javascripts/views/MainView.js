@@ -56,7 +56,7 @@ define([
 				this.$el.html(template);
 								
 				// Interface-specific command menu handling
-				Menu.render(this.currentData.interfaceType);
+				Menu.init(this.currentData.interfaceType);
 
 				$('html').on('click', this.onClickOutsideTab);
 			},
@@ -98,6 +98,7 @@ define([
 			onClickItem: function(e) {
 				console.log("click item");
 				e.preventDefault();
+				e.stopPropagation();
 				var clickedId = $(e.currentTarget).data('id');
 				if (clickedId == this.commandSequence[this.itemCount]) {
 					console.log('clicked correctly!');

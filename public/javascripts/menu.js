@@ -92,14 +92,20 @@ define([
 				Menu.hideRibbons();
 				return false;
 			},
-			render: function(mode) {
+			init: function(mode) {
 				if (mode == "R") { // ribbon
 					console.log('initing Ribbon');
 					$('#ribbon-container').addClass('mode-ribbon');
 					$('.navbar-tabs').removeClass('hidden');
 					$('.navbar-message').addClass('hidden');
 					$('.tab').on('click', this.onClickInsideTab);
-					$(document).on('click', this.onClickOutsideTab);
+					//$(document).on('click', this.onClickOutsideTab);
+
+					// open first tab initially
+					Menu.hideRibbons();
+					this.currentTab = 'font';
+					$('.tab#tab-font').addClass('navbar-tab-active');
+					this.openRibbon('font');
 				} else { // command maps
 					console.log('initing CM');
 					$('#ribbon-container').addClass('mode-command-maps');
