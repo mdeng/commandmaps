@@ -1,5 +1,5 @@
-var NUM_TRIALS_FAMILIARIZATION = 2;
-var NUM_TRIALS_PERFORMANCE = 3;
+var NUM_TRIALS_FAMILIARIZATION = 30;
+var NUM_TRIALS_PERFORMANCE = 90;
 var KEYCODE_ALT = 18;
 
 define([
@@ -46,7 +46,7 @@ define([
 				this.itemCount = 0;
 				this.stage = 0;
 
-				this.numTrials = (this.part % 2 == 1) ? 1 : 2;
+				this.numTrials = (this.part % 2 == 1) ? NUM_TRIALS_FAMILIARIZATION : NUM_TRIALS_PERFORMANCE;
 
 				this.promptView = new PromptView();
 				this.render();
