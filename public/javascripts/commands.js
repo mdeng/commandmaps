@@ -47,22 +47,30 @@ define([
 			    }
 			    return array;
 			},
-			inSameSet: function(id1, id2) {
-				return Math.floor(id1/12) == Math.floor(id2/12);
+			getRibbonID: function(commandID) {
+				return Math.floor(commandID / 12);
+			},
+			inSameRibbon: function(id1, id2) {
+				console.log('id: '+ id1 + " "+ id2);
+				console.log(this.getRibbonID(id1)+ "    "+ this.getRibbonID(id2));
+				this.getRibbonID(id1) == this.getRibbonID(id2);
 			},
 			numRibbonSwitches: function(commandSet) {
-				var numSwitches = 0;
+				var numRibbonSwitches = 0;
 				for (var i = 1; i < commandSet.length; i++) {
-					if (!this.inSameSet(commandSet[i], commandSet[i-1])) {
-						numSwitches++;
+					if (!this.inSameRibbon(commandSet[i], commandSet[i-1])) {
+						numRibbonSwitches++;
 					}
 				}
-				console.log("num switches: " + numSwitches);
-				return numSwitches;
+				console.log("num switches: " + numRibbonSwitches);
+				return numRibbonSwitches;
 			},
-			getValidSequence: function(commandSetId, numRepeats) {
+			getValidSequence: function(commandSetId, numTrials) {
 				console.log(commandSetId);
+
 				var set = this.commandSets[commandSetId];
+				var numRepeats = Math.ceil(numTrials / set.length);
+
 				var seq =[];
 				for (var i = 0; i < numRepeats; i++) {
 					seq = seq.concat(set);
@@ -70,8 +78,6 @@ define([
 				do {
 					this.shuffle(seq);
 				} while (this.numRibbonSwitches(seq) < seq.length/2);
-
-				console.log('length '+seq.length);
 				return seq;
 			},
 			getCommandNames: function() {

@@ -79,7 +79,7 @@ define([
 				}
 			},
 			onClickInsideTab: function(e) {
-				e.stopPropagation();
+				//e.stopPropagation();
 				if (Menu.isEnabled()) {
 					var name = $(e.currentTarget).data('name');
 					if (this.currentTab != name) {
@@ -109,7 +109,6 @@ define([
 					$('.navbar-tabs').removeClass('hidden');
 					$('.navbar-message').addClass('hidden');
 					$('.tab').on('click', this.onClickInsideTab);
-					//$(document).on('click', this.onClickOutsideTab);
 
 					// open first tab initially
 					Menu.hideRibbons();
