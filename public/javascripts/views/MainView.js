@@ -117,6 +117,11 @@ define([
 					} 
 				});
 			},
+			playSound: function(sound) {
+				sound.pause();
+                sound.currentTime = 0;
+                sound.play();
+			},
 			onClickInsideTab: function(e) {
 				var clickedRibbonID = parseInt($(e.currentTarget).data('id'));
 				if (clickedRibbonID != this.trialData.targetRibbonID) {
@@ -140,7 +145,8 @@ define([
 				} else {
 					console.log('clicked incorrectly');
 					this.trialData.hasError = true;
-					// play sound;
+					
+					this.playSound($('#beep')[0]);
 				}
 			},
 		});
