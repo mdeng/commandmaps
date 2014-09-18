@@ -22,10 +22,10 @@ define([
 				var message;
 				switch (this.part) {
 					case 1: 
-						message = 'The following 30 trials will get you acquainted with one command selection interface.';
+						message = 'The following 30 trials will get you acquainted with Interface A.';
 						break;						
 					case 3:
-						message = 'The following 30 trials will get you acquainted with another command selection interface.';
+						message = 'The following 30 trials will get you acquainted with Interface B.';
 						break;
 					default:
 						message = 'The following 90 trials will use the command selection interface you have just seen.';

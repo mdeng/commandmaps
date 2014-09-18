@@ -19,19 +19,19 @@ define([
 				'click #button-next': 'onClickNext',
 			},
 			initialize: function(options) {
-				this.User = window.CMUser;
+				this.user = window.CMUser;
 				this.part = parseInt(options.part);
 
 				var interfaceType = 'R';
-				if (this.User.order % 2 == 0 && this.part < 3
-						|| this.User.order % 2 == 1 && this.part >= 3) {
+				if (this.user.order % 2 == 0 && this.part < 3
+						|| this.user .order % 2 == 1 && this.part >= 3) {
 					interfaceType = 'C';
 				}
 
 				this.currentData = {
-					userID: this.User.id,
+					userID: this.user.id,
 					interfaceType: interfaceType,
-					commandSetId: Math.floor(this.User.order / 2),
+					commandSetId: Math.floor(this.user.order / 2),
 					correct: true,
 				};
 
@@ -83,20 +83,23 @@ define([
 					if (this.part < 4) {
 						Backbone.history.navigate('info/'+(this.part+1), {trigger: true, replace: true});
 					} else {
-						Backbone.history.navigate('goodbye');
+						Backbone.history.navigate('prefs', {trigger: true, replace: true});
 					}
 				}
 			},
 			moveToNextAfterSave: function() {
 				console.log('PUT-ing' + this.currentData);
-				$.ajax("/db/trials", { type: "PUT", data: this.currentData, success: function(response) { 
+				$.ajax('/db/trials', { 
+					type: 'PUT', 
+					data: this.currentData, 
+					success: function(response) { 
 						console.log(response);
 						this.moveToNext();
 					} 
 				});
 			},
 			onClickItem: function(e) {
-				console.log("click item");
+				console.log('click item');
 				e.preventDefault();
 				e.stopPropagation();
 				var clickedId = $(e.currentTarget).data('id');

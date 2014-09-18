@@ -5,18 +5,14 @@ define([
 	'views/HelloView',
 	'views/InfoView',
 	'views/MainView',
+	'views/PreferenceView',
+	'views/GoodbyeView',
 ], function($, _, Backbone, 
 		HelloView,
 		InfoView,
 		MainView,
-		PartOneInfoView, 
-		PartOneMainView, 
-		PartTwoInfoView, 
-		PartTwoMainView,
-		PartThreeInfoView,
-		PartThreeMainView,
-		PartFourInfoView,
-		PartFourMainView) {
+		PreferenceView, 
+		GoodbyeView) {
 
 	var Router = Backbone.Router.extend({
 		routes: {
@@ -25,6 +21,8 @@ define([
 			"info/:part": "info",
 			"main": "main",
 			"main/:part": "main",
+			"prefs": "prefs",
+			"goodbye": "goodbye",
 		}
 	});
 
@@ -51,29 +49,12 @@ define([
 				var main = new MainView({ part: 1 });
 			}
 		});
-		router.on('route:partOneInfo', function() {
-			var partOneInfoView = new PartOneInfoView();
+		router.on('route:prefs', function() {
+			console.log('hey');
+			var preferenceView = new PreferenceView();
 		});
-		router.on('route:partOneMain', function() {
-			var partOneMainView = new PartOneMainView();
-		});
-		router.on('route:partTwoInfo', function() {
-			var partTwoInfoView = new PartTwoInfoView();
-		});
-		router.on('route:partTwoMain', function() {
-			var partTwoMainView = new PartTwoMainView();
-		});
-		router.on('route:partThreeInfo', function() {
-			var partThreeInfoView = new PartThreeInfoView();
-		});
-		router.on('route:partThreeMain', function() {
-			var partThreeMainView = new PartThreeMainView();
-		});
-		router.on('route:partFourInfo', function() {
-			var partFourInfoView = new PartFourInfoView();
-		});
-		router.on('route:partFourMain', function() {
-			var partFourMainView = new PartFourMainView();
+		router.on('route:goodbye', function() {
+			var goodbyeView = new GoodbyeView();
 		});
 		Backbone.history.start();
 	}
