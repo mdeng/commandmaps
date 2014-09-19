@@ -95,6 +95,7 @@ define([
 				}
 			},
 			saveAndPrepareNext: function() {
+				var self = this;
 				var dataToSave = {
 					userID: this.user.id,
 					commandSetID: this.commandSetID,
@@ -113,7 +114,7 @@ define([
 					data: dataToSave, 
 					success: function(response) { 
 						console.log(response);
-						this.prepareNext();
+						self.prepareNext();
 					} 
 				});
 			},
@@ -139,8 +140,8 @@ define([
 						this.prepareNext();
 					} else {
 						// TODO: CHANGE AFTER FIXING DB 
-						this.prepareNext();
-						//this.saveAndPrepareNext();
+						//this.prepareNext();
+						this.saveAndPrepareNext();
 					}
 				} else {
 					console.log('clicked incorrectly');

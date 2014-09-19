@@ -25,25 +25,26 @@ define([
 				this.$el.html(_.template(instruct, {variable: 'info'}) (interfaces));
 			},
 			onSubmit: function(e) {
-				var url = '../db/prefs';
+				var self = this;
+				var url = '/db/prefs';
 
 		        var formData = {
 		        	userID: this.user.id,
 		            interfaceType: $("input[name='interfaceType']:checked").val()
 		        };
 				console.log('Submitting: user '+ formData.userID + ' interface '+ formData.interfaceType);
-				Backbone.history.navigate('goodbye', {trigger: true, replace: true});
-		     /*   $.ajax({
+				//Backbone.history.navigate('goodbye', {trigger: true, replace: true});
+		        $.ajax({
 		            url: url,
 		            type: 'PUT',
-		            data: { interface: formData },
+		            data: formData,
 		            success: function(response) {
 		                console.log(["response: ", response]);
 		                
-						this.undelegateEvents();
+						self.undelegateEvents();
 						Backbone.history.navigate('goodbye', {trigger: true, replace: true});
 		            }
-		        });*/
+		        });
 			}
 		});
 		return InfoView;

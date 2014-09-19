@@ -22,11 +22,12 @@ function processTrial(req, res) {
 		var queryString = "INSERT INTO trials VALUES ('"
 						   + trialData.userID + "', '"
 						   + trialData.interfaceType + "', "
-						   + trialData.commandSetId + ", "
-						   + trialData.parentIsDiff + ", "
+						   + trialData.commandSetID + ", "
+						   + trialData.needsRibbonSwitch + ", "
 						   + trialData.time + ", "
-						   + trialData.correct + ", "
-						   + trialData.commandID + ");";
+						   + trialData.hasError + ", "
+						   + trialData.commandID + ", "
+						   + trialData.hasRibbonError + ");"; 
 		console.log(queryString);
 		client.query(queryString, function(err, result) {
 			done();
@@ -49,7 +50,8 @@ function processPref(req, res) {
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 		var queryString = "INSERT INTO preferences VALUES ('"
 						   + prefData.userID + "', '"
-						   + prefData.pref + "');";
+						   + prefData.interfaceType + "');";
+		console.log(queryString);
 		client.query(queryString, function(err, result) {
 			done();
 			if (err) {
