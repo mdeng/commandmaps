@@ -1,2 +1,4 @@
+logfile
+*.DS_Store
 npm-debug.log
 latest.dump
