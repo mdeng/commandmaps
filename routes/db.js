@@ -12,9 +12,9 @@ router.put('/prefs', processUsers);
 	* commandSetID as int
 	* needsRibbonSwitch as int
 	* time as int
-	* hasError as int
+	* numCommandErrors as int
 	* commandID as int
-	* hasRibbonError as int
+	* numRibbonErrors as int
 */
 function processTrial(req, res) {
 	var trialData = req.body;
@@ -25,9 +25,9 @@ function processTrial(req, res) {
 						   + trialData.commandSetID + ", "
 						   + trialData.needsRibbonSwitch + ", "
 						   + trialData.time + ", "
-						   + trialData.hasError + ", "
+						   + trialData.numCommandErrors + ", "
 						   + trialData.commandID + ", "
-						   + trialData.hasRibbonError + ");"; 
+						   + trialData.numRibbonErrors + ");"; 
 		console.log(queryString);
 		client.query(queryString, function(err, result) {
 			done();
