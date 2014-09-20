@@ -89,7 +89,7 @@ button {
 	.dialog {
 		height: 250px;
 		width: 800px;
-		margin: 200px auto;
+		margin: 150px auto;
 		text-align: left;
 		color: @white;
 
@@ -109,8 +109,50 @@ button {
 			font-size: @font-xlarge;
 		}
 
-		form > * {
-			padding: 10px 60px;
+		::-webkit-input-placeholder { /* WebKit browsers */
+		    color: @dark-gray;
+		    opacity: 1 !important;
+		    font-weight: 500;
+		}
+
+		form {
+			input {
+				font: 14px "Open Sans", Helvetica, Arial, sans-serif;
+				font-weight: 200;
+				background-color: transparent;
+				border: 0;
+	    		border-bottom: 2px @dark-gray solid;
+	    		outline: 0;
+	    		color: @white;
+	    		font-size: @font-large;
+
+	    		&::-webkit-outer-spin-button, 
+	    				&::-webkit-inner-spin-button {
+	    			-webkit-appearance: none;
+    				margin: 0;
+	    		}
+			}
+
+			.prompt {
+				margin-right: 15px;
+			}
+
+			.inline {
+				display: inline-block;
+				width: 250px;
+			}
+
+			.input-short {
+				max-width: 75px;
+			}
+
+			#input-age {
+				text-align: center;
+			}
+
+			& > * {
+				padding: 20px 0px;
+			}
 		}
 	}
 }
@@ -171,8 +213,7 @@ button {
 /* ribbon */
 
 .ribbon {
-	z-index:150;
-	color: @white;
+	z-index: 150;
 	font-size: 20px;
 	.shadow(8px, @black-60);
 	display: inline-block;
@@ -180,9 +221,10 @@ button {
 		position: absolute;
 		top: 50px;
 	}
-	background: @dark-gray;
 	height: 45px;
 	.item {
+		background: @dark-gray;
+		color: @white;
 		float: left;
 		width: 55px;
 		text-align: center;

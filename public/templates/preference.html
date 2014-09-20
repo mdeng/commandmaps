@@ -1,12 +1,22 @@
 <div class="dialog">
 	<form class="message">
-		<div class="prompt">
-			Awesome! Now, which interface did you prefer?
+		<div class="title">
+			Awesome! Just some last questions now.
 		</div>
 		<div class="control-group">
-			<div><input type="radio" id="hi" name="interfaceType" value="<%- info[0] %>"> Interface A </div>
-			<div><input type="radio" name="interfaceType" value="<%- info[1] %>"> Interface B </div>
-			<div><input type="radio" name="interfaceType" value="N"> Neutral </div>
+			<div class="prompt">Which interface did you prefer?</div>
+			<span class="inline"><input type="radio" name="interfaceType" value="<%- info[0] %>"> Interface A </span>
+			<span class="inline"><input type="radio" name="interfaceType" value="<%- info[1] %>"> Interface B </span>
+			<span class="inline"><input type="radio" name="interfaceType" value="N"> Neutral </span>
+		</div>
+		<div class="control-group">
+			<span class="prompt">How old are you?</span> <input id="input-age" class="input-short" type="number" name="age" placeholder="20">
+		</div>
+		<div class="control-group">
+			<div class="prompt">What is your gender?</div>
+			<span class="inline"><input type="radio" name="gender" value="F"> Female</span>
+			<span class="inline"><input type="radio" name="gender" value="M"> Male</span>
+			<span class="inline"><input type="radio" name="gender" value="O"> Other</span>
 		</div>
 	</form>
 	<button id="button-pref-submit">Done</button>

@@ -1,5 +1,5 @@
-var NUM_TRIALS_FAMILIARIZATION = 30;
-var NUM_TRIALS_PERFORMANCE = 90;
+var NUM_TRIALS_FAMILIARIZATION = 1;
+var NUM_TRIALS_PERFORMANCE = 2;
 var KEYCODE_ALT = 18;
 
 define([
@@ -68,8 +68,8 @@ define([
 					targetCommandID: targetCommandID,
 					targetRibbonID: targetRibbonID,
 					needsRibbonSwitch: needsRibbonSwitch, 
-					hasRibbonError: false,
-					hasError: false,
+					numRibbonErrors: 0,
+					numCommandErrors: 0,
 					startTime: Date.now(),
 				};
 
@@ -87,6 +87,7 @@ define([
 					this.promptView.hide();
 					Menu.setEnabled(false);
 				} else {
+					this.undelegateEvents();
 					if (this.part < 4) {
 						Backbone.history.navigate('info/'+(this.part+1), {trigger: true, replace: true});
 					} else {
@@ -99,16 +100,17 @@ define([
 				var dataToSave = {
 					userID: this.user.id,
 					commandSetID: this.commandSetID,
+					interfaceOrder: this.part,
 					interfaceType: this.interfaceType,
 					commandID: this.trialData.targetCommandID,
-					hasError: this.trialData.hasError,
-					hasRibbonError: this.trialData.hasRibbonError,
+					numCommandErrors: this.trialData.numCommandErrors,
+					numRibbonErrors: this.trialData.numRibbonErrors,
 					needsRibbonSwitch: this.trialData.needsRibbonSwitch,
 					time: Date.now() - this.trialData.startTime,
 				};
 				console.log('PUT-ing');
 				console.log(dataToSave);
-
+/*
 				$.ajax('/db/trials', { 
 					type: 'PUT', 
 					data: dataToSave, 
@@ -116,7 +118,7 @@ define([
 						console.log(response);
 						self.prepareNext();
 					} 
-				});
+				});*/
 			},
 			playSound: function(sound) {
 				sound.pause();
@@ -127,7 +129,7 @@ define([
 				var clickedRibbonID = parseInt($(e.currentTarget).data('id'));
 				if (clickedRibbonID != this.trialData.targetRibbonID) {
 					console.log('wrong ribbon: clicked ribbon id '+ clickedRibbonID+ ', target '+this.trialData.targetRibbonID);
-					this.trialData.hasRibbonError = true;
+					this.trialData.numRibbonErrors++;
 				}
 			},
 			onClickItem: function(e) {
@@ -139,13 +141,11 @@ define([
 					if (this.part % 2 == 1) {
 						this.prepareNext();
 					} else {
-						// TODO: CHANGE AFTER FIXING DB 
-						//this.prepareNext();
 						this.saveAndPrepareNext();
 					}
 				} else {
 					console.log('clicked incorrectly');
-					this.trialData.hasError = true;
+					this.trialData.numCommandErrors++;
 					
 					this.playSound($('#beep')[0]);
 				}

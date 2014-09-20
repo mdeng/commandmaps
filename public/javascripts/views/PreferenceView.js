@@ -7,7 +7,8 @@ define([
 		var InfoView = Backbone.View.extend({
 			el: '#overlay-container',
 			events: {
-				'click button#button-pref-submit': 'onSubmit'
+				'click button#button-pref-submit': 'onSubmit',
+				'change input[name="age"]': 'onAgeChange'
 			},
 			initialize: function() {
 				console.log('initializing preference view');
@@ -25,26 +26,33 @@ define([
 				this.$el.html(_.template(instruct, {variable: 'info'}) (interfaces));
 			},
 			onSubmit: function(e) {
-				var self = this;
-				var url = '/db/prefs';
+				if (this.hasValidInputs()) {
+					var self = this;
+					var url = '/db/prefs';
 
-		        var formData = {
-		        	userID: this.user.id,
-		            interfaceType: $("input[name='interfaceType']:checked").val()
-		        };
-				console.log('Submitting: user '+ formData.userID + ' interface '+ formData.interfaceType);
-				//Backbone.history.navigate('goodbye', {trigger: true, replace: true});
-		        $.ajax({
-		            url: url,
-		            type: 'PUT',
-		            data: formData,
-		            success: function(response) {
-		                console.log(["response: ", response]);
-		                
-						self.undelegateEvents();
-						Backbone.history.navigate('goodbye', {trigger: true, replace: true});
-		            }
-		        });
+			        var formData = {
+			        	userID: this.user.id,
+			            interfaceType: $("input[name='interfaceType']:checked").val(),
+			            age: parseInt($("input[name='age']").val()),
+			            gender: $("input[name='gender']:checked").val(),
+			        };
+					console.log('Submitting:');
+					console.log(formData);
+
+					//Backbone.history.navigate('goodbye', {trigger: true, replace: true});
+					/*
+			        $.ajax({
+			            url: url,
+			            type: 'PUT',
+			            data: formData,
+			            success: function(response) {
+			                console.log(["response: ", response]);
+			                
+							self.undelegateEvents();
+							Backbone.history.navigate('goodbye', {trigger: true, replace: true});
+			            }
+			        });*/
+				}
 			}
 		});
 		return InfoView;
