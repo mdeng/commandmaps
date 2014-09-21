@@ -9,7 +9,6 @@ router.get('/new', newUser);
 function newUser(req, res) {
 	var ord;
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-		var pgQuery = Q.nbind(client.query);
 		var text = 'SELECT * FROM "order" WHERE id = 0 FOR UPDATE;';
 		client.query(text, function(err, result) {
 			ord = result.rows[0].lastorder;
