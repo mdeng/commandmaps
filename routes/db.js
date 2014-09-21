@@ -33,7 +33,7 @@ function processTrial(req, res) {
 			done();
 			if (err) {
 				console.error(err);
-				res.status(501).send(err);
+				res.status(500).send(err);
 			} else {
 				res.send(204);
 			}
@@ -60,7 +60,7 @@ function processUsers(req, res) {
 			done();
 			if (err) {
 				console.error(err);
-				res.status(501).send(err);
+				res.status(500).send(err);
 			} else {
 				res.send(204);
 			}
