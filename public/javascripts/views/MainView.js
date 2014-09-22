@@ -110,7 +110,7 @@ define([
 				};
 				console.log('PUT-ing');
 				console.log(dataToSave);
-/*
+
 				$.ajax('/db/trials', { 
 					type: 'PUT', 
 					data: dataToSave, 
@@ -118,7 +118,7 @@ define([
 						console.log(response);
 						self.prepareNext();
 					} 
-				});*/
+				});
 			},
 			playSound: function(sound) {
 				sound.pause();

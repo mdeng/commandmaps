@@ -26,7 +26,7 @@ define([
 				this.$el.html(_.template(instruct, {variable: 'info'}) (interfaces));
 			},
 			onSubmit: function(e) {
-				if (this.hasValidInputs()) {
+				if (/*this.hasValidInputs()*/ true) {
 					var self = this;
 					var url = '/db/prefs';
 
@@ -40,7 +40,7 @@ define([
 					console.log(formData);
 
 					//Backbone.history.navigate('goodbye', {trigger: true, replace: true});
-					/*
+					
 			        $.ajax({
 			            url: url,
 			            type: 'PUT',
@@ -51,7 +51,7 @@ define([
 							self.undelegateEvents();
 							Backbone.history.navigate('goodbye', {trigger: true, replace: true});
 			            }
-			        });*/
+			        });
 				}
 			}
 		});
