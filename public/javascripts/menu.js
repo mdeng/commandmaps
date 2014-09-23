@@ -24,8 +24,8 @@ define([
 				$('#ribbon-container .ribbon-label').addClass('hidden');
 			},
 			showRibbons: function() {
-				$('#ribbon-container .ribbon').removeClass('hidden');
-				$('#ribbon-container .ribbon-label').removeClass('hidden');			
+				$('#ribbon-container.mode-command-maps .ribbon').removeClass('hidden');
+				$('#ribbon-container.mode-command-maps .ribbon-label').removeClass('hidden');			
 			},
 			hideRibbon: function(name) {
 				switch (name) {

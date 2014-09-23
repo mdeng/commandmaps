@@ -88,6 +88,7 @@ define([
 					Menu.setEnabled(false);
 				} else {
 					this.undelegateEvents();
+					$('.ribbon').remove();
 					if (this.part < 4) {
 						Backbone.history.navigate('info/'+(this.part+1), {trigger: true, replace: true});
 					} else {
