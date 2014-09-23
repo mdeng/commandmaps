@@ -9,9 +9,11 @@
 @black-90: rgba(0, 0, 0, .9);
 @black: #000;
 @aqua: #00D1B5;
+@magenta: #FF0043;
 
 /* dimens */
 @doc-width: 750px;
+@font-small: 15px;
 @font-large: 24px;
 @font-xlarge: 30px;
 
@@ -135,6 +137,20 @@ button {
 
 			.prompt {
 				margin-right: 15px;
+			}
+
+			.error {
+				position: relative;
+				left: -200px;
+				top: 30px;
+				color: @magenta;
+				font-size: @font-small;
+				text-transform: uppercase;
+				visibility: hidden;
+
+				&.show-error {
+					visibility: visible;
+				}
 			}
 
 			.inline {

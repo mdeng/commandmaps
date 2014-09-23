@@ -4,15 +4,18 @@
 			Awesome! Just some last questions now.
 		</div>
 		<div class="control-group">
+			<div class="error" id="error-interface">Please select an option.</div>
 			<div class="prompt">Which interface did you prefer?</div>
 			<span class="inline"><input type="radio" name="interfaceType" value="<%- info[0] %>"> Interface A </span>
 			<span class="inline"><input type="radio" name="interfaceType" value="<%- info[1] %>"> Interface B </span>
 			<span class="inline"><input type="radio" name="interfaceType" value="N"> Neutral </span>
 		</div>
 		<div class="control-group">
+			<div class="error" id="error-age">Please enter a valid age.</div>
 			<span class="prompt">How old are you?</span> <input id="input-age" class="input-short" type="number" name="age" placeholder="20">
 		</div>
 		<div class="control-group">
+			<div class="error" id="error-gender">Please select an option.</div>
 			<div class="prompt">What is your gender?</div>
 			<span class="inline"><input type="radio" name="gender" value="F"> Female</span>
 			<span class="inline"><input type="radio" name="gender" value="M"> Male</span>
