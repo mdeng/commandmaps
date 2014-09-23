@@ -9,6 +9,7 @@
 @black-90: rgba(0, 0, 0, .9);
 @black: #000;
 @aqua: #00D1B5;
+@dark-aqua: #09ADA2;
 @magenta: #FF0043;
 
 /* dimens */
@@ -58,15 +59,16 @@ button {
 	.header-text();
 	text-align: center;
 	margin: 0 auto;
-	background: @aqua;
+	background-color: @dark-gray;
 	color: @white;
 	font-size: @font-large;
-	padding: 10px 30px;
-	border: 0;
+	padding: 10px 20px;
+	border: 3px @white solid;
 	outline: 0;
-	.shadow(10px, @black-60);
+	transition: background-color 0.3s ease;
 	&:hover {
 		cursor: pointer;
+		background-color: @aqua;
 	}
 }
 #button-next {
@@ -249,9 +251,6 @@ button {
 		i {
 			margin-top: 12px;
 		}
-		&:hover {
-			cursor: pointer;
-		}
 		&.clicked {
 			color: @black;
 		}
@@ -266,6 +265,9 @@ button {
 	}
 	&.mode-ribbon {
 		top: 50px;
+	}
+	.item:hover {
+		cursor: pointer;
 	}
 }
 
