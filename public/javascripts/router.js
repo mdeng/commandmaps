@@ -16,7 +16,8 @@ define([
 
 	var Router = Backbone.Router.extend({
 		routes: {
-			"": "hello",
+		//	"": "hello",
+			"hello/:type": "hello",
 			"info": "info",
 			"info/:part": "info",
 			"main": "main",
@@ -29,8 +30,14 @@ define([
 	var initialize = function() {
 		var router = new Router();
 		console.log('initialize');
-		router.on('route:hello', function() {
-			var helloView = new HelloView();
+		router.on('route:hello', function(type) {
+			if (type == "t") {
+				var helloView = new HelloView({ isTurk: true });
+			} else if (type == "v") {
+				var helloView = new HelloView({ isTurk: false });
+			} else {
+				//var errorView = new ErrorView();
+			}
 		});
 		router.on('route:info', function(part) {
 			console.log("route:info");

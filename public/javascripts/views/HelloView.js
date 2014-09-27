@@ -10,13 +10,17 @@ define([
 			events: {
 				'click button#btn-begin': 'onClickBegin'
 			},
-			initialize: function() {
+			initialize: function(options) {
+				window.isTurk = options.isTurk;
 				this.$el.removeClass('hidden');
 				this.render();
 			},
 			render: function() {
 				_.templateSettings.variable = 'info';
 				this.$el.html(_.template(instruct));
+			},
+			getIsTurk: function () {
+				return this.isTurk;
 			},
 			onClickBegin: function(e) {
 				// handle the event defined above

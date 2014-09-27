@@ -36,6 +36,7 @@ define([
 			            interfaceType: $("input[name='interfaceType']:checked").val(),
 			            age: parseInt($("input[name='age']").val()),
 			            gender: $("input[name='gender']:checked").val(),
+			            isTurk: window.isTurk,
 			        };
 					console.log('Submitting:');
 					console.log(formData);
