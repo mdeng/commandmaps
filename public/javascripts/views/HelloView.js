@@ -21,7 +21,6 @@ define([
 			onClickBegin: function(e) {
 				// handle the event defined above
 				$.getJSON('/users/new', function(response) {
-					// LOL
 					window.CMUser = response;
 
 					console.log(response);

@@ -16,7 +16,7 @@ define([
 			},
 			render: function() {
 				_.templateSettings.variable = 'info';
-				this.$el.html(_.template(instruct));
+				this.$el.html(_.template(instruct, {variable: 'info'})(window.CMUser));
 			},
 			onClickGoodbye: function(e) {
 				window.CMUser = null;
