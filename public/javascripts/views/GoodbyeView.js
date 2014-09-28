@@ -22,7 +22,11 @@ define([
 				window.CMUser = null;
 
 				console.log('logged out user');
-				Backbone.history.navigate('', { trigger: true, replace: true });
+				if (window.isTurk) {
+					Backbone.history.navigate('#hello/t', { trigger: true, replace: true });
+				} else {
+					Backbone.history.navigate('#hello/v', { trigger: true, replace: true });
+				}
 			}
 		});
 		return GoodbyeView;
