@@ -23,13 +23,13 @@ define([
 				console.log('rendering info for part '+this.part);
 				switch (this.part) {
 					case "1": 
-						message = 'The following 30 trials will get you acquainted with Interface A.';
+						message = 'The following 20 trials will get you acquainted with Interface A.';
 						break;						
 					case "3":
-						message = 'The following 30 trials will get you acquainted with Interface B.';
+						message = 'The following 20 trials will get you acquainted with Interface B.';
 						break;
 					default:
-						message = 'The following 90 trials will use the command selection interface you have just seen.';
+						message = 'The following 40 trials will use the command selection interface you have just seen.';
 						break;
 				}
 				var toRender = {

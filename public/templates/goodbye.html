@@ -1,8 +1,8 @@
 <div class="dialog">
 	<div class="banner">
-		That's all! Your confirmation code is
+		That's all!<% if (info.isTurk) {%> Your confirmation code is
 		<div class="code"><%= info.id %></div>
-		Copy it down&#8212;you'll need to enter it into the Mechanical Turk form to get paid.
+		Copy it down&#8212;you'll need to enter it into the Mechanical Turk form to get paid. <% } %>
 		<p>Thanks so much for your help!</p>
 	</div>
 	<button id="button-goodbye">Goodbye</button>

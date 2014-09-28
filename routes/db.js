@@ -46,17 +46,14 @@ function processTrial(req, res) {
    * interfaceType as 'R' or 'C'
    * gender as 'M', 'F', 'N'
    * age as an integer
+   * isTurk as boolean
 */
 function processUsers(req, res) {
 	var prefData = req.body;
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-		var queryString = "INSERT INTO users VALUES ('"
-						   + prefData.userID + "', '"
-						   + prefData.interfaceType + "', '"
-						   + prefData.gender + "', "
-						   + prefData.age + ");";
-		console.log(queryString);
-		client.query(queryString, function(err, result) {
+		var queryString = "INSERT INTO users VALUES (($1), ($2), ($3), ($4), ($5))";
+		var queryVals = [prefData.userID, prefData.interfaceType, prefData.gender, prefData.age, prefData.isTurk];
+		client.query(queryString, queryVals, function(err, result) {
 			done();
 			if (err) {
 				console.error(err);
