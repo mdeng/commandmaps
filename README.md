@@ -1,4 +1,4 @@
 commandmaps
 ===========
 
-url: http://radiant-journey-8771.herokuapp.com
+url: http://command-study.herokuapp.com
