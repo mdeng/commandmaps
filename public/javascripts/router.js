@@ -7,39 +7,47 @@ define([
 	'views/MainView',
 	'views/PreferenceView',
 	'views/GoodbyeView',
+	'views/ThanksView',
 ], function($, _, Backbone, 
 		HelloView,
 		InfoView,
 		MainView,
 		PreferenceView, 
-		GoodbyeView) {
+		GoodbyeView,
+		ThanksView) {
 
 	var Router = Backbone.Router.extend({
 		routes: {
-		//	"": "hello",
-			"hello/:type": "hello",
+			"": "thanks",
+			"hello/:type": "hello",/*
 			"info": "info",
 			"info/:part": "info",
 			"main": "main",
 			"main/:part": "main",
 			"prefs": "prefs",
-			"goodbye": "goodbye",
+			"goodbye": "goodbye",*/
 		}
 	});
 
 	var initialize = function() {
 		var router = new Router();
 		console.log('initialize');
+		router.on('route:thanks', function() {
+			var thanksView = new ThanksView();
+		});
+		
 		router.on('route:hello', function(type) {
+			var thanksView = new ThanksView();
+			/*
 			if (type == "t") {
 				var helloView = new HelloView({ isTurk: true });
 			} else if (type == "v") {
 				var helloView = new HelloView({ isTurk: false });
 			} else {
 				//var errorView = new ErrorView();
-			}
+			}*/
 		});
-		router.on('route:info', function(part) {
+		/*router.on('route:info', function(part) {
 			console.log("route:info");
 			if (typeof part != 'undefined') {
 				console.log('part is ' + part);
@@ -62,7 +70,7 @@ define([
 		});
 		router.on('route:goodbye', function() {
 			var goodbyeView = new GoodbyeView();
-		});
+		});*/
 		Backbone.history.start();
 	}
 
